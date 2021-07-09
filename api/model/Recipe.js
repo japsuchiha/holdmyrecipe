@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const RecipeSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     ingridients: {
         type: String,
         required: true
@@ -9,9 +13,10 @@ const RecipeSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    picture: {
-        type: String,
-        required: true
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 })
 

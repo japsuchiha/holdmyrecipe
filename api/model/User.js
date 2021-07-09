@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Recipe = require("./Recipe");
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -19,6 +20,12 @@ const UserSchema = new mongoose.Schema({
         min: 6,
         max: 255
     }
+})
+
+UserSchema.virtual('recipes', {
+    ref: 'Recipe',
+    localField: '_id',
+    foreignField: 'owner'
 })
 
 module.exports = mongoose.model('User', UserSchema);

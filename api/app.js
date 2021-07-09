@@ -8,6 +8,7 @@ dotenv.config();
 // Routes
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
+const recipeRoute = require('./routes/recipe');
 
 //Connect to DB
 mongoose.connect(
@@ -23,4 +24,6 @@ app.use(express.json());
 // Route Middlewares
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
+app.use('/api/recipe', recipeRoute);
+
 app.listen(3000, () => console.log("hurray"));
